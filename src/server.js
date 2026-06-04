@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const healthRoutes = require("./routes/healthRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", healthRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`server is running at port ${PORT}`);
