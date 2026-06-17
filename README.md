@@ -1,8 +1,30 @@
 # Scalable Commerce Backend
 
-A scalable e-commerce backend built using Node.js, Express.js, PostgreSQL, Prisma ORM, JWT Authentication, and REST APIs.
+A scalable e-commerce backend built using **Node.js, Express.js, PostgreSQL, Prisma ORM, JWT Authentication, and REST APIs**.
 
-This project is being developed to understand how production-grade backend systems are designed, secured, and scaled.
+This project is being developed to understand how production-grade backend systems are designed, secured, authenticated, and scaled.
+
+---
+
+## Project Status
+
+🚧 Currently Under Development
+
+### Completed Features
+
+- User Registration
+- User Authentication (JWT)
+- Password Hashing (bcrypt)
+- Protected Routes
+- Get All Users API
+- Get Current User Profile API
+- PostgreSQL Integration
+- Prisma ORM Integration
+
+### In Progress
+
+- User Profile Management
+- Product Module
 
 ---
 
@@ -37,9 +59,11 @@ This project is being developed to understand how production-grade backend syste
 ### User Management
 
 - User Registration API
+- User Login API
+- Get All Users API
+- Get Current User Profile API
 - Duplicate Email Validation
 - Password Hashing using bcrypt
-- User Login API
 
 ### Authentication
 
@@ -47,6 +71,7 @@ This project is being developed to understand how production-grade backend syste
 - Authentication Middleware
 - Protected Routes
 - Authorization Header Validation
+- Current Logged-In User Identification
 
 ### Database
 
@@ -71,10 +96,16 @@ POST /api/users
 POST /api/users/login
 ```
 
-### Get Users (Protected Route)
+### Get All Users (Protected Route)
 
 ```http
 GET /api/users
+```
+
+### Get Current User Profile (Protected Route)
+
+```http
+GET /api/users/profile
 ```
 
 Authorization Header:
@@ -103,6 +134,8 @@ Client Sends Token
 Middleware Verifies Token
       ↓
 Access Protected Routes
+      ↓
+Identify Current User
 ```
 
 ---
@@ -115,45 +148,52 @@ src/
 ├── controllers/
 ├── middleware/
 ├── routes/
-├── services/
-├── models/
-└── server.js
+├── server.js
 
 prisma/
 ├── schema.prisma
-└── migrations/
+├── migrations/
 ```
 
 ---
 
 ## Completed Milestones
 
-### Phase 1
+### Phase 1 - Project Setup
 
-- Project Setup
 - Express Server Setup
+- Environment Configuration
 - Health Check API
 
-### Phase 2
+### Phase 2 - Database Setup
 
 - PostgreSQL Setup
 - Prisma Configuration
 - Database Connection
 
-### Phase 3
+### Phase 3 - User Registration
 
 - User Registration API
+- Duplicate Email Validation
 - Password Hashing using bcrypt
 
-### Phase 4
+### Phase 4 - Authentication
 
 - User Login API
-- JWT Authentication
+- JWT Token Generation
+- Authentication Flow
 
-### Phase 5
+### Phase 5 - Route Protection
 
 - Authentication Middleware
 - Protected Routes
+- Authorization Header Validation
+
+### Phase 6 - User Data APIs
+
+- Get All Users API
+- Get Current User Profile API
+- Current User Identification using req.user
 
 ---
 
@@ -161,7 +201,6 @@ prisma/
 
 ### User Module
 
-- Get Current User Profile
 - Update User Profile
 
 ### Product Module
@@ -218,10 +257,6 @@ This project focuses on learning:
 
 ## Author
 
-Naveen
+**Naveen**
 
 Backend Engineering Learning Project
-
-```
-
-```

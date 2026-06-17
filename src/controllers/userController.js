@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const prisma = require("../config/prisma");
 
-const getUser = async (req, res) => {
+const getUsers = async (req, res) => {
   try {
     const users = await prisma.users.findMany();
     return res.status(200).json({
@@ -136,4 +136,4 @@ const loginUser = async (req, res) => {
     });
   }
 };
-module.exports = { getUser, createUser, loginUser };
+module.exports = { getUsers, createUser, loginUser };

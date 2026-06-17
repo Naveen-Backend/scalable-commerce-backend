@@ -3,12 +3,15 @@ const authMiddleware = require("../middleware/authMiddleware");
 const router = express.Router();
 
 const {
-  getUser,
+  getUsers,
   createUser,
   loginUser,
 } = require("../controllers/userController");
 
-router.get("/", authMiddleware, getUser);
+const { getProfile } = require("../controllers/profileController");
+
+router.get("/", authMiddleware, getUsers);
+router.get("/profile", authMiddleware, getProfile);
 router.post("/", createUser);
 router.post("/login", loginUser);
 
