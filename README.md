@@ -1,88 +1,194 @@
 # Scalable Commerce Backend
 
-A scalable e-commerce backend built using **Node.js, Express.js, PostgreSQL, Prisma ORM, JWT Authentication, and REST APIs**.
+A production-style e-commerce backend built using **Node.js, Express.js, PostgreSQL, Prisma ORM, JWT Authentication, and REST APIs**.
 
-This project is being developed to understand how production-grade backend systems are designed, secured, authenticated, and scaled.
+This project is being developed to learn and implement production-grade backend engineering concepts including authentication, authorization, database design, API architecture, security, and scalable backend development.
 
 ---
 
-## Project Status
+# 🚀 Project Status
 
-🚧 Currently Under Development
+> **Status:** Under Active Development
 
-### Completed Features
+## ✅ Completed Modules
 
-- User Registration
-- User Authentication (JWT)
-- Password Hashing (bcrypt)
+- User Authentication
+- JWT Authentication & Authorization
+- Password Hashing using bcrypt
 - Protected Routes
-- Get All Users API
-- Get Current User Profile API
 - PostgreSQL Integration
 - Prisma ORM Integration
+- User Registration API
+- User Login API
+- Get All Users API
+- Get Current User Profile API
+- Database Seeder
 
-### In Progress
+## 🚧 Currently Working On
 
 - User Profile Management
 - Product Module
 
 ---
 
-## Tech Stack
+# 🛠️ Tech Stack
 
-### Backend
+## Backend
 
 - Node.js
 - Express.js
 
-### Database
+## Database
 
 - PostgreSQL
 - Prisma ORM
 
-### Authentication & Security
+## Authentication & Security
 
+- JSON Web Token (JWT)
 - bcrypt
-- JSON Web Tokens (JWT)
 
-### Development Tools
+## Development Tools
 
-- Nodemon
-- Postman
 - Git & GitHub
+- Postman
 - pgAdmin
+- Nodemon
+- VS Code
 
 ---
 
-## Current Features
+# 📂 Project Structure
 
-### User Management
-
-- User Registration API
-- User Login API
-- Get All Users API
-- Get Current User Profile API
-- Duplicate Email Validation
-- Password Hashing using bcrypt
-
-### Authentication
-
-- JWT Token Generation
-- Authentication Middleware
-- Protected Routes
-- Authorization Header Validation
-- Current Logged-In User Identification
-
-### Database
-
-- PostgreSQL Integration
-- Prisma ORM Integration
-- User Data Storage
-- User Data Retrieval
+```text
+scalable-commerce-backend/
+│
+├── prisma/
+│   ├── migrations/
+│   ├── schema.prisma
+│   └── seed.js
+│
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── routes/
+│   ├── services/
+│   └── server.js
+│
+├── .env.example
+├── .gitignore
+├── package.json
+└── README.md
+```
 
 ---
 
-## API Endpoints
+# ⚙️ Getting Started
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/Naveen-Backend/scalable-commerce-backend.git
+```
+
+## 2. Navigate into the Project
+
+```bash
+cd scalable-commerce-backend
+```
+
+## 3. Install Dependencies
+
+```bash
+npm install
+```
+
+## 4. Configure Environment Variables
+
+Create a `.env` file using `.env.example`.
+
+Example:
+
+```env
+PORT=5000
+
+DATABASE_URL="postgresql://postgres:YOUR_POSTGRES_PASSWORD@localhost:5432/commerce_db"
+
+JWT_SECRET=your_super_secret_jwt_key
+```
+
+## 5. Create PostgreSQL Database
+
+Create a database named:
+
+```text
+commerce_db
+```
+
+## 6. Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+## 7. Apply Database Migrations
+
+```bash
+npx prisma migrate dev
+```
+
+## 8. Seed the Database
+
+```bash
+npm run seed
+```
+
+This command creates sample users for testing the APIs.
+
+## 9. Start the Development Server
+
+```bash
+npm run dev
+```
+
+Server runs at:
+
+```text
+http://localhost:5000
+```
+
+---
+
+# 🔐 Authentication Flow
+
+```text
+Register User
+      ↓
+Hash Password using bcrypt
+      ↓
+Store User in PostgreSQL
+      ↓
+Login
+      ↓
+Validate Password
+      ↓
+Generate JWT Token
+      ↓
+Client Stores JWT Token
+      ↓
+Client Sends Authorization Header
+      ↓
+Authentication Middleware Verifies Token
+      ↓
+Access Protected Routes
+```
+
+---
+
+# 📌 Current API Endpoints
+
+## Authentication
 
 ### Register User
 
@@ -96,152 +202,149 @@ POST /api/users
 POST /api/users/login
 ```
 
-### Get All Users (Protected Route)
+---
+
+## Protected Routes
+
+### Get All Users
 
 ```http
 GET /api/users
 ```
 
-### Get Current User Profile (Protected Route)
+### Get Current User Profile
 
 ```http
 GET /api/users/profile
 ```
 
-Authorization Header:
+### Authorization Header
 
-```txt
+```text
 Bearer <JWT_TOKEN>
 ```
 
 ---
 
-## Authentication Flow
+# 🌱 Database Seeder
 
-```txt
-Register User
-      ↓
-Store Hashed Password
-      ↓
-Login
-      ↓
-Generate JWT Token
-      ↓
-Client Stores Token
-      ↓
-Client Sends Token
-      ↓
-Middleware Verifies Token
-      ↓
-Access Protected Routes
-      ↓
-Identify Current User
+The project includes a database seeder for creating sample users.
+
+Run:
+
+```bash
+npm run seed
 ```
+
+Features:
+
+- Creates sample users
+- Hashes passwords using bcrypt
+- Uses Prisma Upsert
+- Prevents duplicate users
+- Safe to run multiple times (Idempotent)
 
 ---
 
-## Project Structure
+# ✅ Completed Milestones
 
-```txt
-src/
-├── config/
-├── controllers/
-├── middleware/
-├── routes/
-├── server.js
+## Phase 1 – Project Setup
 
-prisma/
-├── schema.prisma
-├── migrations/
-```
-
----
-
-## Completed Milestones
-
-### Phase 1 - Project Setup
-
+- Project Initialization
 - Express Server Setup
-- Environment Configuration
 - Health Check API
 
-### Phase 2 - Database Setup
+## Phase 2 – Database Setup
 
 - PostgreSQL Setup
-- Prisma Configuration
+- Prisma ORM Setup
 - Database Connection
 
-### Phase 3 - User Registration
+## Phase 3 – User Registration
 
 - User Registration API
 - Duplicate Email Validation
 - Password Hashing using bcrypt
 
-### Phase 4 - Authentication
+## Phase 4 – Authentication
 
 - User Login API
-- JWT Token Generation
-- Authentication Flow
+- JWT Authentication
+- Login Flow
 
-### Phase 5 - Route Protection
+## Phase 5 – Route Protection
 
 - Authentication Middleware
 - Protected Routes
-- Authorization Header Validation
+- JWT Authorization
 
-### Phase 6 - User Data APIs
+## Phase 6 – User APIs
 
 - Get All Users API
 - Get Current User Profile API
-- Current User Identification using req.user
+- Authorization Validation
+- Prisma Migration
+- Development Environment Recovery
+
+## Phase 6.5 – Database Seeder
+
+- Database Seeder
+- Sample User Generation
+- Password Hashing
+- Prisma Upsert
+- Idempotent Database Seeding
 
 ---
 
-## Upcoming Features
+# 🗺️ Roadmap
 
-### User Module
+## User Module
 
 - Update User Profile
 
-### Product Module
+## Product Module
 
-- Product Creation
-- Product Listing
-- Product Details
-- Product Update
-- Product Deletion
+- Create Product
+- Get Products
+- Get Product By ID
+- Update Product
+- Delete Product
+- Product Search
+- Product Categories
 
-### Cart Module
+## Cart Module
 
-- Add To Cart
-- Remove From Cart
+- Add to Cart
+- Remove from Cart
 - Update Cart Quantity
 
-### Order Module
+## Order Module
 
-- Create Order
+- Place Order
 - Order History
-- Order Status Tracking
+- Order Tracking
 
-### Admin Features
+## Admin Module
 
 - Admin Authentication
 - Product Management
 - Order Management
 
-### Advanced Features
+## Advanced Features
 
 - Role-Based Access Control (RBAC)
 - Pagination
-- Filtering & Search
+- Filtering
+- Searching
+- Logging
 - API Rate Limiting
-- Logging & Monitoring
-- Docker Deployment
-- CI/CD Pipeline
+- Docker
+- CI/CD
+- Unit Testing
 
 ---
 
-## Learning Objectives
+# 🎯 Learning Objectives
 
 This project focuses on learning:
 
@@ -249,14 +352,19 @@ This project focuses on learning:
 - REST API Design
 - Authentication & Authorization
 - Database Design
-- ORM Usage
-- Scalable Backend Development
+- Prisma ORM
+- PostgreSQL
+- Secure Backend Development
 - Production-Level Development Practices
 
 ---
 
-## Author
+# 👨‍💻 Author
 
-**Naveen**
+**Naveen Telagathoti**
 
 Backend Engineering Learning Project
+
+---
+
+⭐ If you found this project helpful, feel free to star the repository.
